@@ -26,6 +26,21 @@ const Login = () => {
        })
     }
 
+    const handelGithubSIngIn = () => {
+        signInWithPopup(auth, githubProvider)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            setUser(loggedUser)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
+
+
+
 
 
     const handelSingOut = () => {
@@ -47,7 +62,7 @@ const Login = () => {
                 <button onClick={handelSingOut}>Sing Out</button> :
                 <>
                     <button onClick={handleGoogleSignIn}>Google Login</button>
-                    <button>Github Login</button>
+                    <button onClick={handelGithubSIngIn}>Github Login</button>
                 </>
             }
 
